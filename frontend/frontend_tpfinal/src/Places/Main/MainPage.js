@@ -13,13 +13,15 @@ import ListItemText from "@mui/material/ListItemText";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 import axios from "axios";
+import { useState } from "react";
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Quests from "./Quests";
 import AddQuests from "./AddQuests";
 
-const MainPage = (props) => {
-  const { token } = props;
+function MainPage (props){
+  const [token, setToken] = useState("");
+  setToken(props);
   const navigate = useNavigate();
   const f = async () => {
     try {
@@ -30,7 +32,7 @@ const MainPage = (props) => {
           Authorization: "BEARER " + token,
         },
       });
-      return result.data.xp;
+      return result.data;
     } catch (e) {
       console.log(e);
     }
@@ -46,7 +48,7 @@ const MainPage = (props) => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Main Page
           </Typography>
-          <Button color="inherit">Level :{f()} </Button>
+          <Button color="inherit">Level : </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -84,8 +86,8 @@ const MainPage = (props) => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: "64px" }}>
         <Routes>
-          <Route path="/addQuests" element={<AddQuests token={token} />} />
-          <Route path="/quests" element={<Quests token={token} />} />
+          <Route path="/addQuests" element={<AddQuests token= {token} />} />
+          <Route path="/quests" element={<Quests token= {token} />} />
         </Routes>
       </Box>
     </Box>

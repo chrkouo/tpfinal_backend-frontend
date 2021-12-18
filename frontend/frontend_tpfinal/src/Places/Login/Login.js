@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import MainPage from "../Main/MainPage";
 
 const Login = (props) => {
   const { setToken } = props;
@@ -71,6 +73,7 @@ const Login = (props) => {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            onClick={() => navigate("mainPage")}
           >
             Login
           </Button>
@@ -82,6 +85,9 @@ const Login = (props) => {
           >
             SignUp
           </Button>
+          <Routes>
+            <Route path="/mainPage" element ={<MainPage/>}/>
+          </Routes>
         </Box>
       </Box>
     </Container>

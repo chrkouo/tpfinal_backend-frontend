@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 
 
-const AddQuests = (props) => {
-  const {token} = props ;
+function AddQuests (props)  {
+   const {token} = props ;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -19,7 +19,7 @@ const AddQuests = (props) => {
           method: "post",
           url: "http://localhost:3001/quests",
           headers: {
-            Authorization: "BEARER " + token,
+            Authorization: "BEARER " + token ,
           },
           data: {
             name: data.get("name"),

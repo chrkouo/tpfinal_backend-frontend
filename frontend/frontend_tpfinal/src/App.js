@@ -14,10 +14,11 @@ function App() {
         <Route
           path="/*"
           element={
-            token ? <MainPage token={token} /> : <Login login={setToken} />
+            token ?  <MainPage token={token} /> : <Login login={setToken} />
           }
         />
         <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/mainPage" element={<MainPage token={token} />} />
         <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </div>
