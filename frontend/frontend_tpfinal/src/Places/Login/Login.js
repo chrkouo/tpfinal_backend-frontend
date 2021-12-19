@@ -6,11 +6,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Routes, Route } from "react-router-dom";
-import MainPage from "../Main/MainPage";
+// import { Routes, Route } from "react-router-dom";
+// import MainPage from "../Main/MainPage";
 
 const Login = (props) => {
-  const { setToken } = props;
+  const { login } = props;
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +26,7 @@ const Login = (props) => {
             password: data.get("password"),
           },
         });
-        setToken(loginRequest.data);
+        login(loginRequest.data);
       } catch (e) {
         console.log(e);
       }
@@ -73,7 +73,6 @@ const Login = (props) => {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            onClick={() => navigate("mainPage")}
           >
             Login
           </Button>
@@ -85,9 +84,9 @@ const Login = (props) => {
           >
             SignUp
           </Button>
-          <Routes>
-            <Route path="/mainPage" element ={<MainPage/>}/>
-          </Routes>
+          {/* <Routes>
+            <Route path="/mainPage" element={<MainPage token={setToken}/>} />
+          </Routes> */}
         </Box>
       </Box>
     </Container>

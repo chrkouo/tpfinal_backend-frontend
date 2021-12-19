@@ -27,7 +27,7 @@ function AddQuests (props)  {
             completionXp: data.get("completionXp"),
           },
         });
-        console.log(questRequest.status);
+         console.log(questRequest.data);
       } catch (e) {
         console.log(e);
       }
@@ -44,6 +44,7 @@ function AddQuests (props)  {
     >
       <Typography variant="h5">Add Quest</Typography>
       <Box
+        component="form" 
         onSubmit={handleSubmit}
         noValidate
         sx={{ mt: 1 }}

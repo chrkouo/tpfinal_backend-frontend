@@ -3,13 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./Places/Login/Login";
 import SignUp from "./Places/SignUp/Signup";
 import MainPage from "./Places/Main/MainPage";
-import { useState } from "react";
+import {  Fragment,useState } from "react";
 
 function App() {
   const [token, setToken] = useState("");
 
   return (
-    <div className="App">
+    <Fragment>
       <Routes>
         <Route
           path="/*"
@@ -18,10 +18,9 @@ function App() {
           }
         />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/mainPage" element={<MainPage token={token} />} />
         <Route path="/signUp" element={<SignUp />} />
       </Routes>
-    </div>
+    </Fragment>
   );
 }
 

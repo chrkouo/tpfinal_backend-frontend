@@ -19,9 +19,10 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Quests from "./Quests";
 import AddQuests from "./AddQuests";
 
-function MainPage (props){
-  const [token, setToken] = useState("");
-  setToken(props);
+const MainPage = (props) =>{
+  const {token} = props
+  const [level, setLevel] = useState(0);
+  let oneLevel = Math.floor(level/100);
   const navigate = useNavigate();
   const f = async () => {
     try {
@@ -32,7 +33,8 @@ function MainPage (props){
           Authorization: "BEARER " + token,
         },
       });
-      return result.data;
+      console.log(result.data)
+      setLevel(result.data.xp);
     } catch (e) {
       console.log(e);
     }
@@ -48,7 +50,7 @@ function MainPage (props){
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Main Page
           </Typography>
-          <Button color="inherit">Level : </Button>
+          <Button color="inherit">Level : {oneLevel} </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -86,8 +88,8 @@ function MainPage (props){
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: "64px" }}>
         <Routes>
-          <Route path="/addQuests" element={<AddQuests token= {token} />} />
-          <Route path="/quests" element={<Quests token= {token} />} />
+          <Route path="/addQuests" element={<AddQuests token={token}  />} />
+          <Route path="/quests" element={<Quests  token={token} />} />
         </Routes>
       </Box>
     </Box>
