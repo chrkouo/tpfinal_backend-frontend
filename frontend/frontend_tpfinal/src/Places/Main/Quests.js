@@ -67,7 +67,7 @@ function Quests(props) {
       <Box>
         <Typography variant="h5">To complete</Typography>
         {myQuest}
-        <Typography variant="h5">To complete</Typography>
+        <Typography variant="h5">Complete</Typography>
       </Box>
     </Paper>
   );
