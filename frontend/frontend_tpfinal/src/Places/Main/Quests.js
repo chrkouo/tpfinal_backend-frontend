@@ -1,7 +1,7 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import axios from "axios"
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Box } from "@mui/system";
@@ -9,9 +9,9 @@ import  Button  from "@mui/material/Button";
 
 function Quests(props) {
   const {token} = props ;
-  const [quest, setQuest] = useState();
+  const [quest, setQuest] = useState([]);
   let {complete} = useParams();
-  const f = async () => {
+  const fo = async () => {
     try {
       const questRequest = await axios({
         method: "get",
@@ -25,18 +25,16 @@ function Quests(props) {
       console.log(e);
     }
   };
-  f();
+  fo();
  
-  const useHandleSubmit = (event) => {
-    event.preventDefault();
-    complete = quest._id;
+   const HandleSubmit = event => () => {
+    complete = event;
     //const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    useEffect(() => {
       const f = async() => {
         const completeRequest = await axios({
           method: "post",
-          url: "http://localhost:3001/complete/" + complete,
+          url: "http://localhost:3001/complete" + complete,
           headers: {
             Authorization: "BEARER " + token ,
           },
@@ -44,20 +42,20 @@ function Quests(props) {
          console.log(completeRequest.data);
     };
     f();
-  }, []);
   };
 
 
-  let myQuest = quest.forEach((a) =><Paper
+  const myQuest = quest.map((a) =><Paper
   elevation={10}
   sx={{
     padding: "15px",
     heigth: "400px",
   }}
-> <Typography variant="h5">{a.name}</Typography>
-  <Typography variant="h6">level {a.level}</Typography>
-  <Typography variant="h6">Complete for {a.completionXp}</Typography>
-  <Button onSubmit={useHandleSubmit} noValidate >COMPLETE</Button></Paper>);
+>   <Typography variant="h6">{a.name}</Typography>
+    <Typography >level {a.level}</Typography>
+    <Typography>Complete for {a.completionXp} xp</Typography>
+    <Button onSubmit={() => HandleSubmit(a._id)} noValidate >COMPLETE</Button>
+  </Paper>);
   return (
     <Paper
       elevation={10}
@@ -67,7 +65,9 @@ function Quests(props) {
       }}
     >
       <Box>
+        <Typography variant="h5">To complete</Typography>
         {myQuest}
+        <Typography variant="h5">To complete</Typography>
       </Box>
     </Paper>
   );

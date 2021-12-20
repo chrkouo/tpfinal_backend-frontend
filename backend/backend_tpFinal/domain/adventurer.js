@@ -39,7 +39,7 @@ const completeQuest = async (questId, adventurerId) => {
     const quest = adventurer.quests.filter(
       (oneQuest) => oneQuest._id == questId
     )[0];
-    quest.completed = !quest.completed;
+    quest.completed = true;
     await adventurerDB.updateById(adventurerId, adventurer);
   } catch (e) {
     console.log(e);

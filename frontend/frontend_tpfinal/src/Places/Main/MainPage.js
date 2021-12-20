@@ -10,8 +10,8 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
-import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
+import AddIcon from '@mui/icons-material/Add';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import axios from "axios";
 import { useState } from "react";
 
@@ -74,13 +74,13 @@ const MainPage = (props) =>{
             onClick={() => navigate("addQuests")}
           >
             <ListItemIcon>
-              <AcUnitIcon />
+              <AddIcon />
             </ListItemIcon>
             <ListItemText primary={"AddQuests"} />
           </ListItem>
           <ListItem button key={"Quests"} onClick={() => navigate("quests")}>
             <ListItemIcon>
-              <LocalPoliceIcon />
+              <PlaylistAddCheckIcon />
             </ListItemIcon>
             <ListItemText primary={"Quests"} />
           </ListItem>
