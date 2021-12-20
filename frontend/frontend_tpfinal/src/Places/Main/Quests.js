@@ -1,7 +1,7 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import axios from "axios"
-//import { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Box } from "@mui/system";
@@ -10,7 +10,7 @@ import  Button  from "@mui/material/Button";
 function Quests(props) {
   const {token} = props ;
   const [quest, setQuest] = useState([]);
-  let {complete} = useParams();
+  let {questId} = useParams();
   const fo = async () => {
     try {
       const questRequest = await axios({
@@ -27,21 +27,21 @@ function Quests(props) {
   };
   fo();
  
-   const HandleSubmit = event => () => {
-    complete = event;
+   const HandleSubmit  = (id) => {
+    questId = id;
     //const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-      const f = async() => {
-        const completeRequest = await axios({
+    useEffect(()=> {
+        const completeRequest = axios({
           method: "post",
-          url: "http://localhost:3001/complete" + complete,
+          url: `http://localhost:3001/complete/${questId}`,
           headers: {
             Authorization: "BEARER " + token ,
           },
         });
-         console.log(completeRequest.data);
-    };
-    f();
+         console.log(completeRequest.status);
+    }, []);
+   
   };
 
 

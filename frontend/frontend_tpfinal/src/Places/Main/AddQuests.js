@@ -58,6 +58,7 @@ function AddQuests (props)  {
           name="name"
           autoComplete="name"
           autoFocus
+         
         />
 
         <TextField
@@ -67,6 +68,7 @@ function AddQuests (props)  {
           label="Level"
           name="level"
           autoComplete="level"
+          defaultValue = "0"
           autoFocus
         />
         <TextField
@@ -76,6 +78,7 @@ function AddQuests (props)  {
           label="CompletionXp"
           name="completionXp"
           autoComplete="completionXp"
+          defaultValue = "0"
           autoFocus
         />
         <Button

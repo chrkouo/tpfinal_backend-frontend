@@ -89,7 +89,7 @@ const MainPage = (props) =>{
       <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: "64px" }}>
         <Routes>
           <Route path="/addQuests" element={<AddQuests token={token}  />} />
-          <Route path="/quests" element={<Quests  token={token} />} />
+          <Route path="/quests/*" element={<Quests  token={token} />} />
         </Routes>
       </Box>
     </Box>
