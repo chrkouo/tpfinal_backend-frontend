@@ -1,24 +1,21 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Login from "./Places/Login/Login";
-import SignUp from "./Places/SignUp/Signup";
+import Login from "./Places/auth/Login";
+import Register from "./Places/auth/Register";
 import MainPage from "./Places/Main/MainPage";
-import {  Fragment,useState } from "react";
+import Reset from "./Places/auth/Reset";
+import {  Fragment } from "react";
 
 function App() {
-  const [token, setToken] = useState("");
+
 
   return (
     <Fragment>
       <Routes>
-        <Route
-          path="/*"
-          element={
-            token ?  <MainPage token={token} /> : <Login login={setToken} />
-          }
-        />
-        <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/mainPage/*" element={<MainPage/>} />
+        <Route path="/reset" element={<Reset />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Fragment>
   );
